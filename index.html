@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Constructive | Reroute, don't rewrite!</title>
+  <style media="screen">
+    span.failed, span.routed {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <h1>Constructive</h1>
+  <p>Reroute, don't rewrite!</p>
+  <h2>ServiceWorker State</h2>
+  <p id="state"></p>
+  <h2>Rerouting Result</h2>
+  <p>
+    <span class="failed">Rerouting failed!</span>
+    <span class="routed">Rerouting succeeded!</span>
+  </p>
+  <script>
+    (function() {
+      var state = document.getElementById('state');
+      if ('serviceWorker' in navigator) {
+        state.innerText = 'Registering ServiceWorker:';
+        navigator.serviceWorker.register('constructive.js').then(function() {
+          state.innerText += ' Registered successfully.';
+        }, function() {
+          state.innerText += ' Registration failed.';
+        });
+      } else {
+        state.innerText = 'ServiceWorker is not supported in this browser/client.';
+      }
+    })();
+  </script>
+</body>
+</html>
