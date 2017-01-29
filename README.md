@@ -1,2 +1,3 @@
-# constructive
-Reconstruct archived web pages on client side using Memento
+# Constructive
+
+Reconstruct archived web pages on the client side using Memento
